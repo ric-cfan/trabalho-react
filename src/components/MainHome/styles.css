@@ -1,0 +1,8 @@
+.main-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  width: 100vw;
+  background-color: blue;
+  
+}
