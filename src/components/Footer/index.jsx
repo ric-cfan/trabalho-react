@@ -5,7 +5,9 @@ function Footer() {
 
   return (
     <div className="footer">
-      <h1>Footer</h1>
+      <p id='info-empresa'>Info Empresa</p>
+      <p id='copyright'>Copyright</p>
+      <p id='info-criadores'>Info criadores</p>
     </div>
   )
 }

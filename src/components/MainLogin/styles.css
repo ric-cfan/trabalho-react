@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#card_container {
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    
+    rgb(201, 201, 221),
+    rgb(16, 82, 156)
+  );
+}
+
+#card {
+
+  transition: 0.5s;
+  background: rgb(9, 2, 51);
+  width: 22rem;
+  height: 24rem;
+  border-radius: 20px;
+  border: gold 3px solid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 30px 0;
+  box-shadow: 5px 5px 4px rgb(0, 0, 0, 0.5);
+}
+
+#card > img {
+  width: 10rem;
+
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
+  min-height: 10rem;
+}
+
+#content > label {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.5s;
+}
+#content > label:hover {
+  color: rgb(255, 217, 136);  
+}
+#content > input, textarea {
+  width: 90%;
+  height: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid gold;
+  outline: none;
+  margin-top: 5px;
+  font-weight: 500;
+  background-color: #171518;
+  text-align: center;
+  color: #fff;
+}
+
+#card > button {
+  width: 30%;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: rgb(187, 158, 97);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #171518;
+  text-decoration: none;
+
+  font-size: 15px;
+  box-shadow: 5px 5px 4px rgb(0, 0, 0, 0.5);
+}
+
+
+#card > button:hover {
+  transition: 0.5s;
+  background-color: rgb(255, 217, 136);
+  transform: translateY(1px);
+  box-shadow: none;
+}

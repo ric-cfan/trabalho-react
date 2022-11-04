@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import MainLogin from '../../components/MainLogin'
+import Header from '../../components/Header'
 import './styles.css'
 
 function Login() {
@@ -9,6 +10,7 @@ function Login() {
     <div className="login">
       <Header />
 
+      <MainLogin />
 
       <Footer />
 
