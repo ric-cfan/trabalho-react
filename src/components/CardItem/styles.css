@@ -2,38 +2,3 @@
   margin: 0;
   padding: 0;
 }
-
-.card-item {
-  width: 500px;
-  height: 300px;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.botoes {
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-#produto {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 80%;
-  color:white;
-}
-
-#dados {
-  width: 35%;
-}
-
-#produto > img {
-  height: 150px;
-  width: 150px;
-}

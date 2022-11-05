@@ -1,16 +1,23 @@
 import { Button, Card } from "react-bootstrap";
+import Caixa from "../Imagens/box.png"
 
-function CardItem() {
+function CardItem({produto}) {
+
   return (
-    <Card bg={"white"} style={{ width: "18rem", color: "black" }}>
-      <Card.Img variant="top" src="/src/components/Imagens/paisagem.jpg" />
+
+    <Card className="card" bg={"white"} style={{ width: "18rem", color: "black" }}>
+        <Card.Title>{produto.nome}</Card.Title>
+      <Card.Img variant="top" src={produto.urlImagem === null ? Caixa : produto.urlImagem} />
       <Card.Body>
-        <Card.Title>Paisagem</Card.Title>
-        <Card.Text>
-          Uma belissima paisagem mostrando montanhas ao nascer do
-          solsadlkfjadslkf jlçasdkf jçasdlkf jadsçfaç lskdfjçald skjfç
-        </Card.Text>
-        <div class="d-grid gap-2">
+
+        <Card.Text> Id: {produto.idProduto} </Card.Text>
+        <Card.Text> Descrição: {produto.descricao} </Card.Text>
+        <Card.Text> Estoque: {produto.qtdEstoque} unidades </Card.Text>
+        <Card.Text> Data de cadastro: {produto.dataCadastro} </Card.Text>
+        <Card.Text> Valor unitário: R${produto.valorUnitario} </Card.Text>
+        <Card.Text> Categoria: {produto.categoria.nome} </Card.Text>
+      
+        <div className="d-grid gap-2">
           <Button variant="primary">
             Editar
           </Button>{" "}

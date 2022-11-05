@@ -9,13 +9,13 @@ function MainLogin() {
         <img id="image" src={Logo} alt="" />
 
         <div id="content">
-          <label for="Titulo">Claiver S2 Bob</label>
+          <label id="Titulo">Claiver S2 Bob</label>
           <input
             type="text"
             id="username"
             placeholder="Digite seu nome de usuário"
           />
-          <input type="password" id="username" placeholder="Digite sua senha" />
+          <input type="password" id="password" placeholder="Digite sua senha" />
         </div>
 
         <button id="submit">ENTRAR</button>

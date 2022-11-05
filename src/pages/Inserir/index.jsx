@@ -1,18 +1,21 @@
 import { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import MainHome from "../../components/MainPainel";
+import MainInserir from "../../components/MainInserir";
 import "./styles.css";
 import Nav from "react-bootstrap/Nav";
 
-function Editar() {
+function Inserir() {
+
   return (
-    <div className="editar">
+    <div className="inserir">
       <Header />
+
+      <MainInserir />
 
       <Footer />
     </div>
   );
 }
 
-export default Editar;
+export default Inserir;

@@ -1,19 +1,18 @@
 import { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import MainPainel from "../../components/MainPainel";
+import MainHome from "../../components/MainPainel";
 import "./styles.css";
+import Nav from "react-bootstrap/Nav";
 
-function Painel() {
+function Atualizar() {
   return (
-    <div className="home">
+    <div className="atualizar">
       <Header />
-
-      <MainPainel />
 
       <Footer />
     </div>
   );
 }
 
-export default Painel;
+export default Atualizar;
