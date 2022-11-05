@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, state } from "react";
 import { Button, Container, Row, Col, Form, Stack, Spinner } from 'react-bootstrap';
 import api from '../../services/api'
 import "./styles.css";
@@ -12,7 +12,7 @@ function MainInserir() {
   const [valorUnitario, setValorUnitario] = useState("")
   const [categoria, setCategoria] = useState("")
   const [categoriaJson, setCategoriaJson] = useState("")
-  const [file, setFile] = useState("")
+  const [file, setFile] = useState({state})
   const [categorias, setCategorias] = useState([])
   
   useEffect(() => {
@@ -28,6 +28,10 @@ function MainInserir() {
       categoriaId()
     }, 100);
   });
+
+  const changeHandler = (event) => {
+		setFile(event.target.files[0]);
+	};
 
   const categoriaId = () => {
     categorias.map( item => {
@@ -52,12 +56,15 @@ function MainInserir() {
       
     }
 
+    const json = JSON.stringify(novoProduto)
+    const blob = new Blob([json], {type: 'application/json'})
+
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("produto", JSON.stringify(novoProduto));
+    formData.append("produto", blob);
     
     categoriaId()
-    console.log(novoProduto)
+    console.log(blob)
     console.log(file)
     const { data } = await api.post("/api/produto", formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
     console.log(data)
@@ -89,10 +96,7 @@ function MainInserir() {
           <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => setValorUnitario(e.target.value)} value={valorUnitario} />
         </Form.Group>
 
-        <Form.Group className="mb-3" >
-          <Form.Label>Imagem do produto:</Form.Label>
-          <Form.Control type="file" placeholder="Insira a imagem" onChange={ e => setFile(e.target.value)} value={file} />
-        </Form.Group>
+        <input type="file" onChange={changeHandler} />
 
         <Form.Label>Categoria:</Form.Label>
         <Form.Select aria-label="Default select example" onChange={ e => setCategoria(e.target.value)} value={categoria}>
