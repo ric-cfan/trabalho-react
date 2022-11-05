@@ -3,16 +3,17 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainHome from "../../components/MainPainel";
 import "./styles.css";
-import Nav from "react-bootstrap/Nav";
 
-function Editar() {
+function Painel() {
   return (
-    <div className="editar">
+    <div className="home">
       <Header />
+
+      <MainHome />
 
       <Footer />
     </div>
   );
 }
 
-export default Editar;
+export default Painel;

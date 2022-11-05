@@ -1,25 +1,27 @@
-import { useState } from 'react'
-import './styles.css'
-import Logo from '../Imagens/box.png'
+import { useState } from "react";
+import "./styles.css";
+import Logo from "../Imagens/box.png";
 
 function MainLogin() {
-
   return (
-      <div id="card_container">
-          <div id="card">
-              <img id="image" src={Logo} alt="" />
+    <div id="card_container">
+      <div id="card">
+        <img id="image" src={Logo} alt="" />
 
+        <div id="content">
+          <label for="Titulo">Claiver S2 Bob</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Digite seu nome de usuário"
+          />
+          <input type="password" id="username" placeholder="Digite sua senha" />
+        </div>
 
-              <div id="content">
-                  <label for="Titulo">Claiver S2 Bob</label>
-                  <input type="text" id="username" placeholder="Digite seu nome de usuário" />
-                  <input type="password" id="username" placeholder="Digite sua senha" />
-              </div>
-
-              <button id="submit">ENTRAR</button>
-          </div>
+        <button id="submit">ENTRAR</button>
       </div>
-  )
+    </div>
+  );
 }
 
-export default MainLogin
+export default MainLogin;

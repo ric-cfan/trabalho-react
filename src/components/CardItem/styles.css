@@ -13,16 +13,11 @@
   flex-direction: column;
 }
 
-#botoes {
+.botoes {
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: space-evenly;
-}
-
-#botoes > button {
-  width: 30%;
-  height: 90%;
 }
 
 #produto {
