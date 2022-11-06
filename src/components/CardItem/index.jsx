@@ -2,11 +2,12 @@ import { Button, Card } from "react-bootstrap";
 import Caixa from "../Imagens/box.png"
 import api from '../../services/api'
 import { LinkContainer } from "react-router-bootstrap";
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 function CardItem({ produto }) {
 
   const onDelete = (id) => {
+    window.location.reload(false);
     const { data } = api.delete("/api/produto/" + id)
   }
 
@@ -18,7 +19,7 @@ function CardItem({ produto }) {
 
     <Card className="card" bg={"white"} style={{ width: "20rem", height: "38rem", color: "black" }}>
       <Card.Title>{produto.nome}</Card.Title>
-      <Card.Img variant="top" src={produto.urlImagem == null ? Caixa : produto.urlImagem} style={{ width: "90%", height: '40%' }} />
+      <Card.Img variant="top" src={produto.urlImagem} style={{ width: "90%", height: '40%' }} />
       <Card.Body>
 
         <Card.Text> Id: {produto.idProduto} </Card.Text>
@@ -29,9 +30,7 @@ function CardItem({ produto }) {
         <Card.Text> Categoria: {produto.categoria.nome} </Card.Text>
 
         <div className="d-grid gap-2">
-          <Link to='/atualizar' id={produto.idProduto} key={produto.idProduto}>LINK</Link>
-
-          <LinkContainer to={`/atualizar/${produto.idProduto}`} id={produto.idProduto} key={produto.idProduto}>
+          <LinkContainer to={`/atualizar/${produto.idProduto}`}>
             <Button onClick={() => setCurrentProduct(produto)} variant="primary" >Atualizar</Button>
           </LinkContainer>
           <Button variant="danger" onClick={() => onDelete(produto.idProduto)}>Excluir</Button>{" "}

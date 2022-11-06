@@ -5,17 +5,16 @@ import "./styles.css";
 import Nav from "react-bootstrap/Nav";
 import axios from 'axios';
 import {useParams, useLocation} from 'react-router-dom'
+import { LinkContainer } from "react-router-bootstrap";
 
 function MainAtualizar({produto}) {
   produto = produto || JSON.parse(localStorage.getItem("@app/product"))
-  const [nome, setNome] = useState("")
-  const [descricao, setDescricao] = useState("")
-  const [qtdEstoque, setQtdEstoque] = useState("")
-  const [valorUnitario, setValorUnitario] = useState("")
   const [categoria, setCategoria] = useState("")
   const [categoriaJson, setCategoriaJson] = useState("")
   const [file, setFile] = useState({state})
   const [categorias, setCategorias] = useState([])
+
+  const id = produto.categoria.id
 
   const [product, setProduct] = useState(produto)
 
@@ -45,7 +44,7 @@ function MainAtualizar({produto}) {
       }
   })}
 
-  const post = async () => {
+  const put = async () => {
     // TODO: Add protection
     // if(nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
     //   alert("Preencha todos os campos")
@@ -56,7 +55,7 @@ function MainAtualizar({produto}) {
       ...product,
       qtdEstoque: parseInt(product.qtdEstoque),
       valorUnitario: parseFloat(product.valorUnitario),
-      
+      idCategoria: parseInt(id)  
     }
 
     const json = JSON.stringify(novoProduto)
@@ -67,16 +66,18 @@ function MainAtualizar({produto}) {
     formData.append("produto", blob);
     
     categoriaId()
-    console.log(blob)
-    console.log(file)
-    const { data } = await api.post("/api/produto", formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
+    console.log("id" + id)
+    console.log("json" + json)
+    const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
     console.log(data)
+
+    
   }
 
   return (
     <div className='main-inserir'>
     <Container className="bg-secondary">
-      <h1 className='text-center'>Inserir novo produto</h1>
+      <h1 className='text-center'>Atualizar dados do produto</h1>
 
       <Form>
         <Form.Group className="mb-3" >
@@ -96,7 +97,7 @@ function MainAtualizar({produto}) {
 
         <Form.Group className="mb-3" >
           <Form.Label>Valor unitário:</Form.Label>
-          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => handleFormChange(e.target.value, "valor")} value={product.valorUnitario} />
+          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => handleFormChange(e.target.value, "valorUnitario")} value={product.valorUnitario} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
@@ -111,10 +112,11 @@ function MainAtualizar({produto}) {
         </Form.Group>
 
          <input type="file" onChange={changeHandler} />
-        
+
         <Stack className="mb-3">
-          <Button className="" onClick={post}>Cadastrar Novo Produto</Button>
+          <Button className="" onClick={put}>Atualizar Produto</Button>
         </Stack>
+
       </Form>
 
     </Container>
