@@ -1,0 +1,12 @@
+.main-inserir {
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    
+    rgb(201, 201, 221),
+    rgb(16, 82, 156)
+  );
+}

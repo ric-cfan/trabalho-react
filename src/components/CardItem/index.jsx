@@ -1,13 +1,20 @@
 import { Button, Card } from "react-bootstrap";
 import Caixa from "../Imagens/box.png"
+import api from '../../services/api'
+import { LinkContainer } from "react-router-bootstrap";
+import {Link} from 'react-router-dom';
 
 function CardItem({produto}) {
 
+  const onDelete = (id) => {
+    const {data} = api.delete("/api/produto/" + id)
+  }
+
   return (
 
-    <Card className="card" bg={"white"} style={{ width: "18rem", color: "black" }}>
+    <Card className="card" bg={"white"} style={{ width: "20rem", height: "38rem", color: "black" }}>
         <Card.Title>{produto.nome}</Card.Title>
-      <Card.Img variant="top" src={produto.urlImagem === null ? Caixa : produto.urlImagem} />
+      <Card.Img variant="top" src={produto.urlImagem == null ? Caixa : produto.urlImagem} style={{ width: "90%", height: '40%'}}/>
       <Card.Body>
 
         <Card.Text> Id: {produto.idProduto} </Card.Text>
@@ -18,11 +25,14 @@ function CardItem({produto}) {
         <Card.Text> Categoria: {produto.categoria.nome} </Card.Text>
       
         <div className="d-grid gap-2">
-          <Button variant="primary">
-            Editar
-          </Button>{" "}
-          <Button variant="danger">Excluir</Button>{" "}
+          <Link to='/atualizar' id={produto.idProduto} key={produto.idProduto}>LINK</Link>
+
+          <LinkContainer to="/atualizar" id={produto.idProduto} key={produto.idProduto}>
+            <Button variant="primary" >Atualizar</Button>
+          </LinkContainer>
+          <Button variant="danger" onClick={() => onDelete(produto.idProduto)}>Excluir</Button>{" "}
         </div>
+
       </Card.Body>
     </Card>
   );

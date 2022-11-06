@@ -4,8 +4,9 @@ import api from '../../services/api'
 import "./styles.css";
 import Nav from "react-bootstrap/Nav";
 import axios from 'axios';
+import {useParams, useLocation} from 'react-router-dom'
 
-function MainInserir() {
+function MainAtualizar({produto}) {
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
   const [qtdEstoque, setQtdEstoque] = useState("")
@@ -14,24 +15,21 @@ function MainInserir() {
   const [categoriaJson, setCategoriaJson] = useState("")
   const [file, setFile] = useState({state})
   const [categorias, setCategorias] = useState([])
-  
+
   useEffect(() => {
     const getApi = async () => {
       const {data} = await api.get("/api/categoria")
       setCategorias(data)
     }
+    console.log(produto)
     getApi()
   }, [])
 
   useEffect(() => {
-       categoriaId()
-  }, [categoria])
-
-  // useEffect(() => {
-  //  setTimeout(() => {
-  //     categoriaId()
-  //   }, 100);
-  // }); 
+   setTimeout(() => {
+      categoriaId()
+    }, 100);
+  }); 
 
   const changeHandler = (event) => {
 		setFile(event.target.files[0]);
@@ -104,7 +102,7 @@ function MainInserir() {
           <Form.Select aria-label="Default select example" onChange={ e => setCategoria(e.target.value)} value={categoria}>
             <option>Escolha a categoria</option>
             {categorias.length > 0 ? (categorias.map( item => {
-              return <option key={item.nome}>{item.nome}</option>
+              return <option>{item.nome}</option>
             })) : null}
 
           </Form.Select>
@@ -122,4 +120,4 @@ function MainInserir() {
   );
 }
 
-export default MainInserir;
+export default MainAtualizar;
