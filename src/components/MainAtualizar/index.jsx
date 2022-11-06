@@ -7,6 +7,7 @@ import axios from 'axios';
 import {useParams, useLocation} from 'react-router-dom'
 
 function MainAtualizar({produto}) {
+  produto = produto || JSON.parse(localStorage.getItem("@app/product"))
   const [nome, setNome] = useState("")
   const [descricao, setDescricao] = useState("")
   const [qtdEstoque, setQtdEstoque] = useState("")
@@ -16,20 +17,22 @@ function MainAtualizar({produto}) {
   const [file, setFile] = useState({state})
   const [categorias, setCategorias] = useState([])
 
+  const [product, setProduct] = useState(produto)
+
+  const handleFormChange = (value, name) => {
+    const values = {...product, [name]: value}
+    setProduct(values)
+  }
+
   useEffect(() => {
     const getApi = async () => {
       const {data} = await api.get("/api/categoria")
       setCategorias(data)
     }
-    console.log(produto)
     getApi()
   }, [])
 
-  useEffect(() => {
-   setTimeout(() => {
-      categoriaId()
-    }, 100);
-  }); 
+
 
   const changeHandler = (event) => {
 		setFile(event.target.files[0]);
@@ -43,17 +46,16 @@ function MainAtualizar({produto}) {
   })}
 
   const post = async () => {
-    if(nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
-      alert("Preencha todos os campos")
-      return
-    }
+    // TODO: Add protection
+    // if(nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
+    //   alert("Preencha todos os campos")
+    //   return
+    // }
 
     const novoProduto = {
-      nome: nome,
-      descricao: descricao,
-      qtdEstoque: parseInt(qtdEstoque),
-      valorUnitario: parseFloat(valorUnitario),
-      idCategoria: categoriaJson
+      ...product,
+      qtdEstoque: parseInt(product.qtdEstoque),
+      valorUnitario: parseFloat(product.valorUnitario),
       
     }
 
@@ -79,27 +81,27 @@ function MainAtualizar({produto}) {
       <Form>
         <Form.Group className="mb-3" >
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" placeholder="Insira o nome do produto" onChange={ e => setNome(e.target.value)} value={nome} />
+          <Form.Control type="text" placeholder="Insira o nome do produto" onChange={ e => handleFormChange(e.target.value, "nome")} value={product.nome} />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Descrição: </Form.Label>
-          <Form.Control as="textarea" rows={3} onChange={ e => setDescricao(e.target.value)} value={descricao} />
+          <Form.Control as="textarea" rows={3} onChange={ e => handleFormChange(e.target.value, "descricao")} value={product.descricao} />
         </Form.Group> 
 
         <Form.Group className="mb-3" >
           <Form.Label>Estoque:</Form.Label>
-          <Form.Control type="number" placeholder="Insira a quantidade de estoque do produto" onChange={ e => setQtdEstoque(e.target.value)} value={qtdEstoque} />
+          <Form.Control type="number" placeholder="Insira a quantidade de estoque do produto" onChange={ e => handleFormChange(e.target.value, "qtdEstoque")} value={product.qtdEstoque} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Valor unitário:</Form.Label>
-          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => setValorUnitario(e.target.value)} value={valorUnitario} />
+          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => handleFormChange(e.target.value, "valor")} value={product.valorUnitario} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Categoria:</Form.Label>
-          <Form.Select aria-label="Default select example" onChange={ e => setCategoria(e.target.value)} value={categoria}>
+          <Form.Select aria-label="Default select example" onChange={ e => handleFormChange(e.target.value, "categoria")} value={product.categoria.nome}>
             <option>Escolha a categoria</option>
             {categorias.length > 0 ? (categorias.map( item => {
               return <option>{item.nome}</option>

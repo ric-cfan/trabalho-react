@@ -11,7 +11,7 @@ function App() {
     <Routes> 
       <Route path="/" element={<Login />} />
       <Route path="/painel" element={<Painel />} />
-      <Route path="/atualizar" element={<Atualizar />} />
+      <Route path="/atualizar/:id" element={<Atualizar />} />
       <Route path="/inserir" element={<Inserir />} />
       <Route path="*" element={<h1>Erro 404: Página não encontrada</h1>} />
     </Routes>
