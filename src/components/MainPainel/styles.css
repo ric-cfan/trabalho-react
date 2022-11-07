@@ -1,6 +1,6 @@
 .main-home {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   min-height: 80vh;
@@ -12,3 +12,24 @@
   );
   
 }
+
+.lista-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100%;
+  width: 90%;
+  
+}
+
+.containerBotoes {
+  margin-top: 2rem;
+}
+
+/* .botoes {
+  width: 80%;
+  margin-top: 10px;
+  border-radius: 10px !important;
+} */

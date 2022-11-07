@@ -86,7 +86,7 @@ function MainInserir() {
 
         <Form.Group className="mb-3">
           <Form.Label>Descrição: </Form.Label>
-          <Form.Control as="textarea" rows={3} onChange={ e => setDescricao(e.target.value)} value={descricao} />
+          <Form.Control as="textarea" placeholder="Insira a descricao" rows={3} onChange={ e => setDescricao(e.target.value)} value={descricao} style={{textAlign:"left"}}/>
         </Form.Group> 
 
         <Form.Group className="mb-3" >
@@ -109,11 +109,11 @@ function MainInserir() {
 
           </Form.Select>
         </Form.Group>
-
-         <input type="file" onChange={changeHandler} />
+        
+        <input type="file" onChange={changeHandler} className="inputFile"/>
         
         <Stack className="mb-3">
-          <Button className="" onClick={post}>Cadastrar Novo Produto</Button>
+          <Button className="" onClick={post} style={{marginTop:'0.8rem'}}>Cadastrar Novo Produto</Button>
         </Stack>
       </Form>
 

@@ -17,9 +17,9 @@ function CardItem({ produto }) {
 
   return (
 
-    <Card className="card" bg={"white"} style={{ width: "20rem", height: "38rem", color: "black" }}>
+    <Card className="card" bg={"white"} style={{ display: "flex", alignItems: "center", width: "17rem", height: "38rem", color: "black", marginTop: "2rem", marginBottom: "2rem" }}>
       <Card.Title>{produto.nome}</Card.Title>
-      <Card.Img variant="top" src={produto.urlImagem} style={{ width: "90%", height: '40%' }} />
+      <Card.Img variant="top" src={produto.urlImagem} style={{ width: "90%", height: '40%', borderRadius: '10px'}} />
       <Card.Body>
 
         <Card.Text> Id: {produto.idProduto} </Card.Text>

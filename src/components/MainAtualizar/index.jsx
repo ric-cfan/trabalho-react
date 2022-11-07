@@ -71,7 +71,7 @@ function MainAtualizar({produto}) {
     const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
     console.log(data)
 
-    
+
   }
 
   return (
@@ -87,7 +87,7 @@ function MainAtualizar({produto}) {
 
         <Form.Group className="mb-3">
           <Form.Label>Descrição: </Form.Label>
-          <Form.Control as="textarea" rows={3} onChange={ e => handleFormChange(e.target.value, "descricao")} value={product.descricao} />
+          <Form.Control as="textarea" placeholder="Insira a descricao" rows={3} onChange={ e => handleFormChange(e.target.value, "descricao")} value={product.descricao} style={{textAlign:"left"}}/>
         </Form.Group> 
 
         <Form.Group className="mb-3" >

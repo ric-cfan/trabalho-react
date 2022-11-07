@@ -10,3 +10,9 @@
     rgb(16, 82, 156)
   );
 }
+
+input {
+  border-radius: 10px;
+  background-color: white;
+  padding: 0.5rem;
+}

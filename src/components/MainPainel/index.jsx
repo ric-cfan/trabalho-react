@@ -10,8 +10,12 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 
 function MainPainel() {
   const [produtos, setProdutos] = useState([])
-  const [produtosGet, setProdutosGet] = useState([])
-  const[filtro, setFiltro] = useState(0)
+  const [escolha, setEscolha] = useState()
+  const [retorno, setRetorno] = useState(
+    <>{produtos?.map((item, index) =>
+      <CardItem key={index} produto={item} />)} 
+    </>
+  )
 
   const getApi = async () => {
     const { data } = await api.get("/api/produto")
@@ -22,22 +26,68 @@ function MainPainel() {
     getApi()
   }, [])
 
+  useEffect(() => {
+    if(escolha == 2) {
+      setRetorno(<>{produtos?.filter(item => item.qtdEstoque > 0).map( (itemFiltrado, index) => (
+        <CardItem key={index} produto={itemFiltrado} />))}
+      </>)
+    }
+    else if(escolha == 3) {
+      setRetorno(<>{produtos?.filter(item => item.qtdEstoque < 1).map( (itemFiltrado, index) => (
+        <CardItem key={index} produto={itemFiltrado} />))} 
+      </>)
+    }
+    else {
+      setRetorno(<>{produtos?.map((item, index) =>
+        <CardItem key={index} produto={item} />)} 
+      </>)
+    }
+  }, [retorno, escolha])
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+  const mostrarCards = () => {
+    console.log(event.target.value)
+    setEscolha(event.target.value)
+
+    // if(event.target.value == 2) {
+    //   return (<>{produtos?.filter(item => item.qtdEstoque > 0).map( (itemFiltrado, index) => (
+    //     <CardItem key={index} produto={itemFiltrado} />))}
+    //   </>)
+    // }
+    // else if(event.target.value == 3) {
+    //   return (<>{produtos?.filter(item => item.qtdEstoque < 1).map( (itemFiltrado, index) => (
+    //     <CardItem key={index} produto={itemFiltrado} />))} 
+    //   </>)
+    // }
+    // else {
+    //   return (<>{produtos?.map((item, index) =>
+    //     <CardItem key={index} produto={item} />)} 
+    //   </>)
+    // }
+  }
+
   return (
     <div className="main-home">
 
-    <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={null}>
-        <ToggleButton id="tbg-radio-1" value={1}>
+    <ToggleButtonGroup className="containerBotoes" type="radio" name="options" defaultValue={1} onChange={mostrarCards}>
+        <ToggleButton className="botoes" id="tbg-radio-1" value={1}>
           Todos
         </ToggleButton>
-        <ToggleButton id="tbg-radio-2" value={2}>
+        <ToggleButton className="botoes" id="tbg-radio-2" value={2}>
           Em estoque        </ToggleButton>
-        <ToggleButton id="tbg-radio-3" value={3} variant='danger'>
+        <ToggleButton className="botoes" id="tbg-radio-3" value={3} variant='danger'>
           Fora de estoque        </ToggleButton>
     </ToggleButtonGroup>
 
-      {produtos?.map((item, index) =>
-        <CardItem key={index} produto={item} />
-      )}
+    <div className="lista-cards">{retorno}</div>
+
+    {/* {produtos?.map((item, index) =>
+      <CardItem key={index} produto={item} />
+    )} */}
+
     </div>
   );
 }
