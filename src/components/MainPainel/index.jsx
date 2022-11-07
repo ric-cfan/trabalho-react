@@ -16,6 +16,7 @@ function MainPainel() {
       <CardItem key={index} produto={item} />)} 
     </>
   )
+  const [anterior, setAnterior] = useState()
 
   const getApi = async () => {
     const { data } = await api.get("/api/produto")

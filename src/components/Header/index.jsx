@@ -21,14 +21,8 @@ function Header() {
         </Nav.Item>
 
         <Nav.Item>
-          <LinkContainer to="/atualizar">
-            <Nav.Link eventKey="link-3">Atualizar</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-
-        <Nav.Item>
           <LinkContainer to="/inserir">
-            <Nav.Link eventKey="link-4">Inserir</Nav.Link>
+            <Nav.Link eventKey="link-3">Inserir</Nav.Link>
           </LinkContainer>
         </Nav.Item>
       </Nav>

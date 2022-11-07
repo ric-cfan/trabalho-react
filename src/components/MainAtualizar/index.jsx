@@ -2,10 +2,7 @@ import { useState, useEffect, state } from "react";
 import { Button, Container, Row, Col, Form, Stack, Spinner } from 'react-bootstrap';
 import api from '../../services/api'
 import "./styles.css";
-import Nav from "react-bootstrap/Nav";
-import axios from 'axios';
-import {useParams, useLocation} from 'react-router-dom'
-import { LinkContainer } from "react-router-bootstrap";
+import {useNavigate} from 'react-router-dom';
 
 function MainAtualizar({produto}) {
   produto = produto || JSON.parse(localStorage.getItem("@app/product"))
@@ -13,6 +10,8 @@ function MainAtualizar({produto}) {
   const [categoriaJson, setCategoriaJson] = useState("")
   const [file, setFile] = useState({state})
   const [categorias, setCategorias] = useState([])
+
+  const navigate = useNavigate();
 
   const id = produto.categoria.id
 
@@ -70,7 +69,7 @@ function MainAtualizar({produto}) {
     console.log("json" + json)
     const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
     console.log(data)
-
+    navigate('/painel')
 
   }
 

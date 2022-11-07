@@ -9,7 +9,7 @@ function MainLogin() {
         <img id="image" src={Logo} alt="" />
 
         <div id="content">
-          <label id="Titulo">Claiver S2 Bob</label>
+          <label id="Titulo">SerraTreco</label>
           <input
             type="text"
             id="username"
