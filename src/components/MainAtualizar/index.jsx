@@ -44,11 +44,6 @@ function MainAtualizar({produto}) {
   })}
 
   const put = async () => {
-    // TODO: Add protection
-    // if(nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
-    //   alert("Preencha todos os campos")
-    //   return
-    // }
 
     const novoProduto = {
       ...product,
@@ -56,11 +51,6 @@ function MainAtualizar({produto}) {
       valorUnitario: parseFloat(product.valorUnitario),
       idCategoria: parseInt(id)  
     }
-
-    // if(novoProduto.nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
-    //   alert("Preencha todos os campos")
-    //   return
-    // }
 
     const json = JSON.stringify(novoProduto)
     const blob = new Blob([json], {type: 'application/json'})
@@ -70,10 +60,9 @@ function MainAtualizar({produto}) {
     formData.append("produto", blob);
     
     categoriaId()
-    console.log("id" + id)
-    console.log("json" + json)
+
     const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Authorization": `${token}`, "Accept": "application/json", "Content-Type": "multipart/form-data"}})
-    console.log(data)
+
     navigate('/painel')
 
   }
@@ -86,7 +75,7 @@ function MainAtualizar({produto}) {
       <Form>
         <Form.Group className="mb-3" >
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" placeholder="Insira o nome do produto" onChange={ e => handleFormChange(e.target.value, "nome")} value={product.nome} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}/>
+          <Form.Control required="required" type="text" placeholder="Insira o nome do produto" onChange={ e => handleFormChange(e.target.value, "nome")} value={product.nome} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}/>
         </Form.Group>
 
         <Form.Group className="mb-3">

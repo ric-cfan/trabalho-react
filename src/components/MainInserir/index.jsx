@@ -28,12 +28,6 @@ function MainInserir() {
     categoriaId()
   }, [categoria])
 
-  // useEffect(() => {
-  //  setTimeout(() => {
-  //     categoriaId()
-  //   }, 100);
-  // }); 
-
   const changeHandler = (event) => {
     setFile(event.target.files[0]);
   };
