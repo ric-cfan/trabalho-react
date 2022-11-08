@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  min-height: 80vh;
+  min-height: 72vh;
   width: 100%;
   background-image: radial-gradient(
     
@@ -26,6 +26,10 @@
 
 .containerBotoes {
   margin-top: 2rem;
+}
+
+spam {
+  color: red;
 }
 
 /* .botoes {

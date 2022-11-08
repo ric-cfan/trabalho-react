@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./styles.css";
 import { LinkContainer } from "react-router-bootstrap";
-import BlackBox from "../Imagens/boxB.png"
+import CastleColor from "../Imagens/castleC.png";
+import Lego from "../Imagens/legoPieces.png";
 
 function Header() {
   return (
     <header>
       <div className="imagem">
-        <img src={BlackBox} height="80%"/>
+        <img src={CastleColor} height="80%"/>
       </div>
 
-      <Nav justify variant="tabs" defaultActiveKey="/" >
+      <Nav justify variant="tabs" defaultActiveKey="/">
         <Nav.Item>
           <LinkContainer to="/painel">
             <Nav.Link eventKey="link-1">Painel</Nav.Link>
@@ -30,37 +31,11 @@ function Header() {
         </Nav.Item>
       </Nav>
 
+      <div className="imagem">
+        <img src={Lego} height="80%"/>
+      </div>
     </header>
   );
 }
 
 export default Header;
-
-// import { useState } from 'react'
-// import './styles.css'
-// import { Link } from 'react-router-dom'
-
-// function Header() {
-
-//   return (
-//     <div className="header">
-
-//       <h1>Header</h1>
-
-//       <Link to="/">
-//         <button>Deslogar</button>
-//       </Link>
-
-//       <Link to="/home">
-//         <button>Home</button>
-//       </Link>
-
-//       <Link to="/editar">
-//         <button>Editar</button>
-//       </Link>
-
-//     </div>
-//   )
-// }
-
-// export default Header

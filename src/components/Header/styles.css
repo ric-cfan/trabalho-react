@@ -2,18 +2,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 10vh;
+  height: 18vh;
   width: 100%;
 }
 
 .imagem {
   height: 100%;
-  width: 8rem;
+  width: 12rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.deslogar {
-  width: 8rem;
-}

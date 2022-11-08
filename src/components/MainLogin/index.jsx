@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./styles.css";
-import Logo from "../Imagens/box.png";
+import Logo from "../Imagens/castleW.png";
 
 function MainLogin() {
   return (
@@ -9,7 +9,7 @@ function MainLogin() {
         <img id="image" src={Logo} alt="" />
 
         <div id="content">
-          <label id="Titulo">SerraTreco</label>
+          <label id="Titulo">Serra<spam>Lego</spam></label>
           <input
             type="text"
             id="username"
