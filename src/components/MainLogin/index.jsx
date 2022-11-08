@@ -22,7 +22,7 @@ function MainLogin() {
         <img id="image" src={Logo} alt="" />
 
         <div id="content">
-          <label id="Titulo">Serra<span>Lego</span></label>
+          <label id="Titulo">Serra<span>Treco</span></label>
           <input
             type="text"
             id="username"

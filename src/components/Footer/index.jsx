@@ -1,15 +1,12 @@
-import { useState } from 'react'
-import './styles.css'
+import { useState } from "react";
+import "./styles.css";
 
 function Footer() {
-
   return (
     <div className="footer">
-      <p id='info-empresa'>Info Empresa</p>
-      <p id='copyright'>Copyright</p>
-      <p id='info-criadores'>Info criadores</p>
+      <p id="copyright">SerraTreco©</p>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
