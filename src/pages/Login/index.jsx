@@ -8,7 +8,6 @@ function Login() {
 
   return (
     <div className="login">
-      <Header />
 
       <MainLogin />
 

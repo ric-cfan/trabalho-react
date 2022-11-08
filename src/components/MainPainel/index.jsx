@@ -80,8 +80,10 @@ function MainPainel() {
     // }
   }
 
+  const token = localStorage.getItem("token")
+
   const onDelete = async (id) => {
-    const { data } = await api.delete("/api/produto/" + id)
+    const { data } = await api.delete("/api/produto/" + id, {headers: {"Authorization": `${token}`}})
     const novoArray = produtosFiltrados.filter(item => item.idProduto != id)
     setProdutosFiltrados(novoArray)
   }

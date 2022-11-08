@@ -1,26 +1,47 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./styles.css";
-import Logo from "../Imagens/castleW.png";
+import Logo from "../Imagens/box.png";
+import { AuthContext } from "../Contexts/auth"
+import api from "../../services/api";
 
 function MainLogin() {
+  const { login } = useContext(AuthContext);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+ 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("submit", { username, password });
+      login(username, password);
+
+    }
+
   return (
-    <div id="card_container">
+    <form id="card_container" onSubmit={handleSubmit}>
       <div id="card">
         <img id="image" src={Logo} alt="" />
 
         <div id="content">
-          <label id="Titulo">Serra<spam>Lego</spam></label>
+          <label id="Titulo">Serra<span>Lego</span></label>
           <input
             type="text"
             id="username"
             placeholder="Digite seu nome de usuário"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-          <input type="password" id="password" placeholder="Digite sua senha" />
+          <input 
+          type="password" 
+          id="password" 
+          placeholder="Digite sua senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+           />
         </div>
-
-        <button id="submit">ENTRAR</button>
+        <button id="submit" >ENTRAR</button>
       </div>
-    </div>
+    </form>
   );
 }
 

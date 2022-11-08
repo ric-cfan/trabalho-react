@@ -22,6 +22,8 @@ function MainAtualizar({produto}) {
     setProduct(values)
   }
 
+  const token = localStorage.getItem("token")
+
   useEffect(() => {
     const getApi = async () => {
       const {data} = await api.get("/api/categoria")
@@ -70,7 +72,7 @@ function MainAtualizar({produto}) {
     categoriaId()
     console.log("id" + id)
     console.log("json" + json)
-    const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Accept": "application/json", "Content-Type": "multipart/form-data"}})
+    const { data } = await api.put(`/api/produto/${produto.idProduto}`, formData, {headers: {"Authorization": `${token}`, "Accept": "application/json", "Content-Type": "multipart/form-data"}})
     console.log(data)
     navigate('/painel')
 

@@ -1,12 +1,20 @@
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./styles.css";
 import { LinkContainer } from "react-router-bootstrap";
 import CastleColor from "../Imagens/castleC.png";
 import Lego from "../Imagens/legoPieces.png";
+import { AuthContext } from "../../components/Contexts/auth";
 
 function Header() {
+
+  const { logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout();
+  }
+
   return (
     <header>
       <div className="imagem">
@@ -25,7 +33,7 @@ function Header() {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <LinkContainer to="/">
+          <LinkContainer to="/" onClick={handleLogout}>
             <Nav.Link eventKey="link-3">Deslogar</Nav.Link>
           </LinkContainer>
         </Nav.Item>
