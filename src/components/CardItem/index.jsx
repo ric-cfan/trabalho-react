@@ -14,8 +14,8 @@ function CardItem({ produto, onDelete }) {
 
   return (
 
-    <Card className="card" bg={"white"} style={{ display: "flex", alignItems: "center", width: "17rem", height: "38rem", color: "black", margin: "0.6rem 0.6rem 0.6rem 0.6rem"}}>
-      <Card.Title>{produto.nome}</Card.Title>
+    <Card className="card" style={{ display: "flex", alignItems: "center", width: "17rem", height: "38rem", color: "white", margin: "0.6rem 0.6rem 0.6rem 0.6rem", backgroundColor:"rgb(9, 2, 51)", border: '3px solid gold', borderRadius: '20px'}}>
+      <Card.Title style={{margin: '10px 0 10px 0'}}>{produto.nome}</Card.Title>
       <Card.Img variant="top" src={produto.urlImagem} style={{ width: "90%", height: '40%', borderRadius: '10px'}} />
       <Card.Body>
 

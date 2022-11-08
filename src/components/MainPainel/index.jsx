@@ -49,9 +49,17 @@ function MainPainel() {
   const mostrarCards = (e) => {
     console.log(e)
     // setEscolha(e.target.value)
+    if(e == 1) {
+      setProdutosFiltrados(produtos)
+    }
 
     if(e == 2) {
       const filtro = produtos.filter(item => item.qtdEstoque > 0)
+      setProdutosFiltrados(filtro)
+    }
+
+    if(e == 3) {
+      const filtro = produtos.filter(item => item.qtdEstoque <= 0)
       setProdutosFiltrados(filtro)
     }
 
@@ -93,9 +101,11 @@ function MainPainel() {
 
     {/* <div className="lista-cards">{retorno}</div> */}
 
-    {produtosFiltrados?.map((item, index) =>
+    <div className="lista-cards">
+      {produtosFiltrados?.map((item, index) =>
       <CardItem key={index} produto={item} onDelete={onDelete}/>
-    )}
+    )};
+    </div>
 
     </div>
   );

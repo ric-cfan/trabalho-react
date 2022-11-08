@@ -30,8 +30,6 @@ function MainAtualizar({produto}) {
     getApi()
   }, [])
 
-
-
   const changeHandler = (event) => {
 		setFile(event.target.files[0]);
 	};
@@ -79,46 +77,49 @@ function MainAtualizar({produto}) {
   }
 
   return (
-    <div className='main-inserir'>
-    <Container className="bg-secondary">
+    <div className='main-atualizar'>
+    <Container className="container">
       <h1 className='text-center'>Atualizar dados do produto</h1>
 
       <Form>
         <Form.Group className="mb-3" >
           <Form.Label>Nome:</Form.Label>
-          <Form.Control type="text" placeholder="Insira o nome do produto" onChange={ e => handleFormChange(e.target.value, "nome")} value={product.nome} />
+          <Form.Control type="text" placeholder="Insira o nome do produto" onChange={ e => handleFormChange(e.target.value, "nome")} value={product.nome} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}/>
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Descrição: </Form.Label>
-          <Form.Control as="textarea" placeholder="Insira a descricao" rows={3} onChange={ e => handleFormChange(e.target.value, "descricao")} value={product.descricao} style={{textAlign:"left"}}/>
+          <Form.Control as="textarea" placeholder="Insira a descricao" rows={3} onChange={ e => handleFormChange(e.target.value, "descricao")} value={product.descricao} style={{textAlign:"left", backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}/>
         </Form.Group> 
 
         <Form.Group className="mb-3" >
           <Form.Label>Estoque:</Form.Label>
-          <Form.Control type="number" placeholder="Insira a quantidade de estoque do produto" onChange={ e => handleFormChange(e.target.value, "qtdEstoque")} value={product.qtdEstoque} />
+          <Form.Control type="number" placeholder="Insira a quantidade de estoque do produto" onChange={ e => handleFormChange(e.target.value, "qtdEstoque")} value={product.qtdEstoque} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}/>
         </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Valor unitário:</Form.Label>
-          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => handleFormChange(e.target.value, "valorUnitario")} value={product.valorUnitario} />
+          <Form.Control type="number" placeholder="Insira o valor unitário do produto" onChange={ e => handleFormChange(e.target.value, "valorUnitario")} value={product.valorUnitario} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Categoria:</Form.Label>
-          <Form.Select aria-label="Default select example" onChange={ e => handleFormChange(e.target.value, "categoria")} value={product.categoria.nome}>
-            <option>Escolha a categoria</option>
+          <Form.Select aria-label="Default select example" onChange={ e => handleFormChange(e.target.value, "categoria")} value={product.categoria.nome} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}>
+            <option></option>
             {categorias.length > 0 ? (categorias.map( item => {
-              return <option>{item.nome}</option>
+              return <option style={{color:'white'}} key={item.nome}>{item.nome} key={item.nome}>{item.nome}</option>
             })) : null}
 
           </Form.Select>
         </Form.Group>
 
-         <input type="file" onChange={changeHandler} />
+        <Form.Group className="mb-3" >
+          <Form.Label>Imagem: </Form.Label><br></br>
+          <input type="file" onChange={changeHandler} />
+        </Form.Group>
 
         <Stack className="mb-3">
-          <Button className="" onClick={put}>Atualizar Produto</Button>
+          <Button className="botao" style={{marginTop:'0.8rem', border: 'none', outline: 'none', backgroundColor: 'rgb(187, 158, 97)', color: '#171518', fontWeight: 'bold', boxShadow: '5px 5px 4px rgb(0, 0, 0, 0.5)'}} onClick={put}>Atualizar Produto</Button>
         </Stack>
 
       </Form>

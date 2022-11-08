@@ -1,4 +1,4 @@
-.main-inserir {
+.main-atualizar {
   min-height: 80vh;
   width: 100%;
   display: flex;
@@ -9,4 +9,31 @@
     rgb(201, 201, 221),
     rgb(16, 82, 156)
   );
+}
+
+input {
+  border-radius: 10px;
+  background-color: #171518;
+  border: gold 1px solid;
+  padding: 0.5rem;
+  color:#818181
+}
+
+.container {
+  margin: 1rem 0 1rem 0;
+  background-color: rgb(9, 2, 51);
+  color: white;
+  border-radius: 20px;
+  border: gold 3px solid;
+}
+
+.text-center {
+  margin: 1rem 0 1rem 0;
+}
+
+.botao:hover {
+  transition: 0.5s;
+  background-color: rgb(255, 217, 136) !important;
+  transform: translateY(1px);
+  box-shadow: none;
 }

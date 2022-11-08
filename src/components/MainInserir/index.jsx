@@ -104,7 +104,7 @@ function MainInserir() {
         <Form.Group className="mb-3" >
           <Form.Label>Categoria:</Form.Label>
           <Form.Select aria-label="Default select example" onChange={ e => setCategoria(e.target.value)} value={categoria} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}>
-            <option style={{color:'grey'}}></option>
+            <option></option>
             {categorias.length > 0 ? (categorias.map( item => {
               return <option style={{color:'white'}} key={item.nome}>{item.nome}</option>
             })) : null}
