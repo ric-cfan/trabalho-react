@@ -57,6 +57,11 @@ function MainAtualizar({produto}) {
       idCategoria: parseInt(id)  
     }
 
+    // if(novoProduto.nome == "" || descricao == "" || qtdEstoque == "" || valorUnitario == "" || categoria == "" || categoria == "Escolha a categoria") {
+    //   alert("Preencha todos os campos")
+    //   return
+    // }
+
     const json = JSON.stringify(novoProduto)
     const blob = new Blob([json], {type: 'application/json'})
 

@@ -11,47 +11,49 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 function MainPainel() {
   const [produtos, setProdutos] = useState([])
   const [escolha, setEscolha] = useState()
-  const [retorno, setRetorno] = useState(
-    <>{produtos?.map((item, index) =>
-      <CardItem key={index} produto={item} />)} 
-    </>
-  )
-  const [anterior, setAnterior] = useState()
+  const [produtosFiltrados, setProdutosFiltrados] = useState()
+  // const [retorno, setRetorno] = useState(
+  //   <>{produtos?.map((item, index) =>
+  //     <CardItem key={index} produto={item} />)} 
+  //   </>
+  // )
 
   const getApi = async () => {
     const { data } = await api.get("/api/produto")
     setProdutos(data)
+    setProdutosFiltrados(data)
   }
 
   useEffect(() => {
     getApi()
   }, [])
 
-  useEffect(() => {
-    if(escolha == 2) {
-      setRetorno(<>{produtos?.filter(item => item.qtdEstoque > 0).map( (itemFiltrado, index) => (
-        <CardItem key={index} produto={itemFiltrado} />))}
-      </>)
-    }
-    else if(escolha == 3) {
-      setRetorno(<>{produtos?.filter(item => item.qtdEstoque < 1).map( (itemFiltrado, index) => (
-        <CardItem key={index} produto={itemFiltrado} />))} 
-      </>)
-    }
-    else {
-      setRetorno(<>{produtos?.map((item, index) =>
-        <CardItem key={index} produto={item} />)} 
-      </>)
-    }
-  }, [retorno, escolha])
+  // useEffect(() => {
+  //   if(escolha == 2) {
+  //     setRetorno(<>{produtos?.filter(item => item.qtdEstoque > 0).map( (itemFiltrado, index) => (
+  //       <CardItem key={index} produto={itemFiltrado} />))}
+  //     </>)
+  //   }
+  //   else if(escolha == 3) {
+  //     setRetorno(<>{produtos?.filter(item => item.qtdEstoque < 1).map( (itemFiltrado, index) => (
+  //       <CardItem key={index} produto={itemFiltrado} />))} 
+  //     </>)
+  //   }
+  //   else {
+  //     setRetorno(<>{produtos?.map((item, index) =>
+  //       <CardItem key={index} produto={item} />)} 
+  //     </>)
+  //   }
+  // }, [retorno, escolha])
 
-  function refreshPage() {
-    window.location.reload(false);
-  }
+  const mostrarCards = (e) => {
+    console.log(e)
+    // setEscolha(e.target.value)
 
-  const mostrarCards = () => {
-    console.log(event.target.value)
-    setEscolha(event.target.value)
+    if(e == 2) {
+      const filtro = produtos.filter(item => item.qtdEstoque > 0)
+      setProdutosFiltrados(filtro)
+    }
 
     // if(event.target.value == 2) {
     //   return (<>{produtos?.filter(item => item.qtdEstoque > 0).map( (itemFiltrado, index) => (
@@ -70,10 +72,16 @@ function MainPainel() {
     // }
   }
 
+  const onDelete = async (id) => {
+    const { data } = await api.delete("/api/produto/" + id)
+    const novoArray = produtosFiltrados.filter(item => item.idProduto != id)
+    setProdutosFiltrados(novoArray)
+  }
+
   return (
     <div className="main-home">
 
-    <ToggleButtonGroup className="containerBotoes" type="radio" name="options" defaultValue={1} onChange={mostrarCards}>
+    <ToggleButtonGroup className="containerBotoes" type="radio" name="options" defaultValue={1} onChange={e => mostrarCards(e)} style={{marginBottom: '1.4rem'}}>
         <ToggleButton className="botoes" id="tbg-radio-1" value={1}>
           Todos
         </ToggleButton>
@@ -83,11 +91,11 @@ function MainPainel() {
           Fora de estoque        </ToggleButton>
     </ToggleButtonGroup>
 
-    <div className="lista-cards">{retorno}</div>
+    {/* <div className="lista-cards">{retorno}</div> */}
 
-    {/* {produtos?.map((item, index) =>
-      <CardItem key={index} produto={item} />
-    )} */}
+    {produtosFiltrados?.map((item, index) =>
+      <CardItem key={index} produto={item} onDelete={onDelete}/>
+    )}
 
     </div>
   );
