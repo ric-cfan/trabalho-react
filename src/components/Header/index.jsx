@@ -3,29 +3,33 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./styles.css";
 import { LinkContainer } from "react-router-bootstrap";
+import BlackBox from "../Imagens/boxB.png"
 
 function Header() {
   return (
     <header>
-      <Nav justify variant="tabs" defaultActiveKey="/home">
-        <Nav.Item>
-          <LinkContainer to="/">
-            <Nav.Link eventKey="link-1">Deslogar</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
+      <div className="imagem">
+        <img src={BlackBox} height="80%"/>
+      </div>
 
+      <Nav justify variant="tabs" defaultActiveKey="/" >
         <Nav.Item>
           <LinkContainer to="/painel">
-            <Nav.Link eventKey="link-2">Painel</Nav.Link>
+            <Nav.Link eventKey="link-1">Painel</Nav.Link>
           </LinkContainer>
         </Nav.Item>
-
         <Nav.Item>
           <LinkContainer to="/inserir">
-            <Nav.Link eventKey="link-3">Inserir</Nav.Link>
+            <Nav.Link eventKey="link-2">Inserir</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/">
+            <Nav.Link eventKey="link-3">Deslogar</Nav.Link>
           </LinkContainer>
         </Nav.Item>
       </Nav>
+
     </header>
   );
 }
