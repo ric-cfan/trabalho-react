@@ -107,7 +107,7 @@ function MainAtualizar({produto}) {
           <Form.Select aria-label="Default select example" onChange={ e => handleFormChange(e.target.value, "categoria")} value={product.categoria.nome} style={{backgroundColor:'#171518', border: '1px solid gold', color: 'white'}}>
             <option></option>
             {categorias.length > 0 ? (categorias.map( item => {
-              return <option style={{color:'white'}} key={item.nome}>{item.nome} key={item.nome}>{item.nome}</option>
+              return <option style={{color:'white'}} key={item.nome}> {item.nome} </option>
             })) : null}
 
           </Form.Select>
